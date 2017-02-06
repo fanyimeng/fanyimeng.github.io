@@ -430,7 +430,7 @@
 
 <span class="n">taskname</span>           <span class="o">=</span> <span class="s">"clean"</span>
 <span class="n">vis</span>                <span class="o">=</span>  <span class="s">"cbC_cont.ms"</span>
-<span class="n">imagename</span>          <span class="o">=</span>  <span class="s">"cbC_0206"</span>
+<span class="n">imagename</span>          <span class="o">=</span>  <span class="s">"cbC_0207"</span>
 <span class="n">outlierfile</span>        <span class="o">=</span>  <span class="s">""</span>
 <span class="n">field</span>              <span class="o">=</span>  <span class="s">"SgrB2_C00,SgrB2_C01,SgrB2_C02,SgrB2_C03,SgrB2_C04,SgrB2_C05,SgrB2_C06,SgrB2_C07,SgrB2_C08,SgrB2_C09"</span>
 <span class="n">spw</span>                <span class="o">=</span>  <span class="s">""</span>
@@ -468,7 +468,7 @@
 <span class="n">negcomponent</span>       <span class="o">=</span>  <span class="o">-</span><span class="mi">1</span>
 <span class="n">smallscalebias</span>     <span class="o">=</span>  <span class="mf">0.6</span>
 <span class="n">interactive</span>        <span class="o">=</span>  <span class="bp">False</span>
-<span class="n">mask</span>               <span class="o">=</span>  <span class="s">"circle[[960pix,960pix], 600pix]"</span>
+<span class="n">mask</span>               <span class="o">=</span>  <span class="s">"circle[[960pix,960pix], 720pix]"</span>
 <span class="n">nchan</span>              <span class="o">=</span>  <span class="o">-</span><span class="mi">1</span>
 <span class="n">start</span>              <span class="o">=</span>  <span class="mi">0</span>
 <span class="n">width</span>              <span class="o">=</span>  <span class="mi">1</span>
@@ -491,14 +491,181 @@
 <span class="n">usescratch</span>         <span class="o">=</span>  <span class="bp">True</span>
 <span class="n">noise</span>              <span class="o">=</span>  <span class="s">"1.0Jy"</span>
 <span class="n">npixels</span>            <span class="o">=</span>  <span class="mi">0</span>
-<span class="n">npercycle</span>          <span class="o">=</span>  <span class="mi">100</span>
+<span class="n">npercycle</span>          <span class="o">=</span>  <span class="mi">5000</span>
 <span class="n">cyclefactor</span>        <span class="o">=</span>  <span class="mf">1.5</span>
-<span class="n">cyclespeedup</span>       <span class="o">=</span>  <span class="mi">500</span>
+<span class="n">cyclespeedup</span>       <span class="o">=</span>  <span class="mi">5000</span>
 <span class="n">nterms</span>             <span class="o">=</span>  <span class="mi">1</span>
 <span class="n">reffreq</span>            <span class="o">=</span>  <span class="s">""</span>
 <span class="n">chaniter</span>           <span class="o">=</span>  <span class="bp">False</span>
 <span class="n">flatnoise</span>          <span class="o">=</span>  <span class="bp">True</span>
 <span class="n">allowchunk</span>         <span class="o">=</span>  <span class="bp">False</span>
+
+
+<span class="n">split</span><span class="p">(</span><span class="n">vis</span> <span class="o">=</span> <span class="s">'cbC.ms'</span><span class="p">,</span>
+    <span class="n">outputvis</span> <span class="o">=</span> <span class="s">'cbC_cont.ms'</span><span class="p">,</span>
+    <span class="n">datacolumn</span> <span class="o">=</span> <span class="s">'corrected'</span><span class="p">,</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="s">''</span><span class="p">,</span>
+    <span class="n">spw</span> <span class="o">=</span> <span class="s">'2~33'</span>
+    <span class="p">)</span>
+
+<span class="n">split</span><span class="p">(</span><span class="n">vis</span> <span class="o">=</span> <span class="s">'cbC.ms'</span><span class="p">,</span>
+    <span class="n">outputvis</span> <span class="o">=</span> <span class="s">'cbC_cont2.ms'</span><span class="p">,</span>
+    <span class="n">datacolumn</span> <span class="o">=</span> <span class="s">'corrected'</span><span class="p">,</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="s">''</span><span class="p">,</span>
+    <span class="n">spw</span> <span class="o">=</span> <span class="s">'2~33'</span>
+    <span class="p">)</span>
+
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">meng</span><span class="o">/</span><span class="n">vla_16a</span><span class="o">-</span><span class="mi">195</span><span class="o">/</span><span class="n">CBandVla16a195</span><span class="o">/</span><span class="n">CBand16a195</span><span class="o">.</span><span class="n">ms</span>
+
+
+<span class="c">#Interactive clean</span>
+
+<span class="n">vis</span>                 <span class="o">=</span> <span class="s">'cbC_cont2.ms'</span>    <span class="c">#  Name of input visibility file</span>
+<span class="n">imagename</span>           <span class="o">=</span> <span class="s">'cbC_0207_interactive'</span> <span class="c">#  Pre-name of output images</span>
+<span class="n">outlierfile</span>         <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Text file with image names, sizes, centers for outliers</span>
+<span class="n">field</span>               <span class="o">=</span> <span class="s">'SgrB2_C00,SgrB2_C01,SgrB2_C02,SgrB2_C03,SgrB2_C04,SgrB2_C05,SgrB2_C06,SgrB2_C07,SgrB2_C08,SgrB2_C09'</span> <span class="c">#  F</span>
+                                        <span class="c">#   ield Name or id</span>
+<span class="n">spw</span>                 <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Spectral windows e.g. '0~3', '' is all</span>
+<span class="n">selectdata</span>          <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Other data selection parameters</span>
+     <span class="n">timerange</span>      <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Range of time to select from data</span>
+     <span class="n">uvrange</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Select data within uvrange</span>
+     <span class="n">antenna</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Select data based on antenna/baseline</span>
+     <span class="n">scan</span>           <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Scan number range</span>
+     <span class="n">observation</span>    <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Observation ID range</span>
+     <span class="n">intent</span>         <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Scan Intent(s)</span>
+<span class="n">mode</span>                <span class="o">=</span>      <span class="s">'mfs'</span>        <span class="c">#  Spectral gridding type (mfs, channel, velocity, frequency)</span>
+     <span class="n">nterms</span>         <span class="o">=</span>          <span class="mi">1</span>        <span class="c">#  Number of Taylor coefficients to model the sky frequency dependence</span>
+     <span class="n">reffreq</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Reference frequency (nterms &gt; 1),'' uses central data-frequency</span>
+
+<span class="n">gridmode</span>            <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Gridding kernel for FFT-based transforms, default='' None</span>
+<span class="n">niter</span>               <span class="o">=</span>       <span class="mi">1000</span>        <span class="c">#  Maximum number of iterations</span>
+<span class="n">gain</span>                <span class="o">=</span>        <span class="mf">0.1</span>        <span class="c">#  Loop gain for cleaning</span>
+<span class="n">threshold</span>           <span class="o">=</span>  <span class="s">'0.00mJy'</span>        <span class="c">#  Flux level to stop cleaning, must include units: '1.0mJy'</span>
+<span class="n">psfmode</span>             <span class="o">=</span>    <span class="s">'clark'</span>        <span class="c">#  Method of PSF calculation to use during minor cycles</span>
+<span class="n">imagermode</span>          <span class="o">=</span>   <span class="s">'mosaic'</span>        <span class="c">#  Options: 'csclean' or 'mosaic', '', uses psfmode</span>
+     <span class="n">mosweight</span>      <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Individually weight the fields of the mosaic</span>
+     <span class="n">ftmachine</span>      <span class="o">=</span>   <span class="s">'mosaic'</span>        <span class="c">#  Gridding method for the image</span>
+     <span class="n">scaletype</span>      <span class="o">=</span>    <span class="s">'SAULT'</span>        <span class="c">#  Controls scaling of pixels in the image plane. default='SAULT'; example:</span>
+                                        <span class="c">#   scaletype='PBCOR' Options: 'PBCOR','SAULT'</span>
+     <span class="n">cyclefactor</span>    <span class="o">=</span>        <span class="mf">1.5</span>        <span class="c">#  Controls how often major cycles are done. (e.g. 5 for frequently)</span>
+     <span class="n">cyclespeedup</span>   <span class="o">=</span>         <span class="o">-</span><span class="mi">1</span>        <span class="c">#  Cycle threshold doubles in this number of iterations</span>
+     <span class="n">flatnoise</span>      <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Controls whether searching for clean components is done in a constant</span>
+                                        <span class="c">#   noise residual image (True) or in an optimal signal-to-noise residual</span>
+                                        <span class="c">#   image (False)</span>
+
+<span class="n">multiscale</span>          <span class="o">=</span>        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>        <span class="c">#  Deconvolution scales (pixels); [] = standard clean</span>
+     <span class="n">negcomponent</span>   <span class="o">=</span>         <span class="o">-</span><span class="mi">1</span>        <span class="c">#  Stop cleaning if the largest scale finds this number of neg components</span>
+     <span class="n">smallscalebias</span> <span class="o">=</span>        <span class="mf">0.6</span>        <span class="c">#  a bias to give more weight toward smaller scales</span>
+
+<span class="n">interactive</span>         <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Use interactive clean (with GUI viewer)</span>
+     <span class="n">npercycle</span>      <span class="o">=</span>       <span class="mi">1000</span>        <span class="c">#  Clean iterations before interactive prompt (can be changed)</span>
+
+<span class="n">mask</span>                <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Cleanbox(es), mask image(s), region(s), or a level</span>
+<span class="n">imsize</span>              <span class="o">=</span> <span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1920</span><span class="p">]</span>      <span class="c">#  x and y image size in pixels.  Single value: same for both</span>
+<span class="n">cell</span>                <span class="o">=</span> <span class="s">'0.5arcsec'</span>       <span class="c">#  x and y cell size(s). Default unit arcsec.</span>
+<span class="n">phasecenter</span>         <span class="o">=</span> <span class="s">'J2000 17h47m19.75 -28d23m07'</span> <span class="c">#  Image center: direction or field index</span>
+<span class="n">restfreq</span>            <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Rest frequency to assign to image (see help)</span>
+<span class="n">stokes</span>              <span class="o">=</span>        <span class="s">'I'</span>        <span class="c">#  Stokes params to image (eg I,IV,IQ,IQUV)</span>
+<span class="n">weighting</span>           <span class="o">=</span>   <span class="s">'briggs'</span>        <span class="c">#  Weighting of uv (natural, uniform, briggs, ...)</span>
+     <span class="n">robust</span>         <span class="o">=</span>        <span class="mf">0.0</span>        <span class="c">#  Briggs robustness parameter</span>
+     <span class="n">npixels</span>        <span class="o">=</span>          <span class="mi">0</span>        <span class="c">#  number of pixels to determine uv-cell size 0=&gt; field of view</span>
+
+<span class="n">uvtaper</span>             <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Apply additional uv tapering of visibilities</span>
+<span class="n">modelimage</span>          <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Name of model image(s) to initialize cleaning</span>
+<span class="n">restoringbeam</span>       <span class="o">=</span>       <span class="p">[</span><span class="s">''</span><span class="p">]</span>        <span class="c">#  Output Gaussian restoring beam for CLEAN image</span>
+<span class="n">pbcor</span>               <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Output primary beam-corrected image</span>
+<span class="n">minpb</span>               <span class="o">=</span>        <span class="mf">0.2</span>        <span class="c">#  Minimum PB level to use</span>
+<span class="n">usescratch</span>          <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  True if to save model visibilities in MODEL_DATA column</span>
+<span class="n">allowchunk</span>          <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Divide large image cubes into channel chunks for deconvolution</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="n">clean</span><span class="p">(</span><span class="n">vis</span><span class="o">=</span><span class="s">"cbC.ms"</span>
+<span class="n">imagename</span><span class="o">=</span><span class="s">"masked_cbC"</span>
+<span class="n">outlierfile</span><span class="o">=</span><span class="s">""</span>
+<span class="n">field</span><span class="o">=</span><span class="s">"SgrB2_C00,SgrB2_C01,SgrB2_C02,SgrB2_C03,SgrB2_C04,SgrB2_C05,SgrB2_C06,SgrB2_C07,SgrB2_C08,SgrB2_C09"</span><span class="p">,</span>
+<span class="n">spw</span><span class="o">=</span><span class="s">"2~33"</span><span class="p">,</span>
+<span class="n">selectdata</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">timerange</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">uvrange</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">antenna</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">scan</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">observation</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">intent</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">mode</span><span class="o">=</span><span class="s">"mfs"</span><span class="p">,</span>
+<span class="n">resmooth</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">gridmode</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">wprojplanes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">facets</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">cfcache</span><span class="o">=</span><span class="s">"cfcache.dir"</span><span class="p">,</span>
+<span class="n">rotpainc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+<span class="n">painc</span><span class="o">=</span><span class="mf">360.0</span><span class="p">,</span>
+<span class="n">aterm</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">psterm</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">mterm</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">wbawp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">conjbeams</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">epjtable</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">interpolation</span><span class="o">=</span><span class="s">"linear"</span><span class="p">,</span>
+<span class="n">niter</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span>
+<span class="n">gain</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="n">threshold</span><span class="o">=</span><span class="s">"0.00mJy"</span><span class="p">,</span>
+<span class="n">psfmode</span><span class="o">=</span><span class="s">"clark"</span><span class="p">,</span>
+<span class="n">imagermode</span><span class="o">=</span><span class="s">"mosaic"</span><span class="p">,</span>
+<span class="n">ftmachine</span><span class="o">=</span><span class="s">"mosaic"</span><span class="p">,</span>
+<span class="n">mosweight</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">scaletype</span><span class="o">=</span><span class="s">"SAULT"</span><span class="p">,</span>
+<span class="n">multiscale</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="n">negcomponent</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">smallscalebias</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+<span class="n">interactive</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">mask</span><span class="o">=</span><span class="s">"circle[[960pix,960pix], 480pix]"</span><span class="p">,</span>
+<span class="n">nchan</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">outframe</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">veltype</span><span class="o">=</span><span class="s">"radio"</span><span class="p">,</span>
+<span class="n">imsize</span><span class="o">=</span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1920</span><span class="p">],</span>
+<span class="n">cell</span><span class="o">=</span><span class="s">"0.5arcsec"</span><span class="p">,</span>
+<span class="n">phasecenter</span><span class="o">=</span><span class="s">"J2000 17h47m19.75 -28d23m07"</span><span class="p">,</span>
+<span class="n">restfreq</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">stokes</span><span class="o">=</span><span class="s">"I"</span><span class="p">,</span>
+<span class="n">weighting</span><span class="o">=</span><span class="s">"briggs"</span><span class="p">,</span>
+<span class="n">robust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="n">uvtaper</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">outertaper</span><span class="o">=</span><span class="p">[</span><span class="s">''</span><span class="p">],</span>
+<span class="n">innertaper</span><span class="o">=</span><span class="p">[</span><span class="s">'1.0'</span><span class="p">],</span>
+<span class="n">modelimage</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">restoringbeam</span><span class="o">=</span><span class="p">[</span><span class="s">''</span><span class="p">],</span>
+<span class="n">pbcor</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">minpb</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="n">usescratch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">noise</span><span class="o">=</span><span class="s">"1.0Jy"</span><span class="p">,</span>
+<span class="n">npixels</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">npercycle</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="n">cyclefactor</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+<span class="n">cyclespeedup</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">nterms</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">reffreq</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+<span class="n">chaniter</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="n">flatnoise</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">allowchunk</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c">#ninurta   /scratch/meng/inc</span>
+<span class="n">clean</span><span class="p">(</span><span class="n">vis</span><span class="o">=</span><span class="s">"cbC_cont_fInc.ms"</span><span class="p">,</span><span class="n">imagename</span><span class="o">=</span><span class="s">"cbC_fInc"</span><span class="p">,</span><span class="n">outlierfile</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">field</span><span class="o">=</span><span class="s">"SgrB2_C00,SgrB2_C01,SgrB2_C02,SgrB2_C03,SgrB2_C04,SgrB2_C05,SgrB2_C06,SgrB2_C07,SgrB2_C08,SgrB2_C09"</span><span class="p">,</span><span class="n">spw</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+          <span class="n">selectdata</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">timerange</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">uvrange</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">antenna</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">scan</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+          <span class="n">observation</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">intent</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">"mfs"</span><span class="p">,</span><span class="n">resmooth</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">gridmode</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+          <span class="n">wprojplanes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">facets</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cfcache</span><span class="o">=</span><span class="s">"cfcache.dir"</span><span class="p">,</span><span class="n">rotpainc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span><span class="n">painc</span><span class="o">=</span><span class="mf">360.0</span><span class="p">,</span>
+          <span class="n">aterm</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">psterm</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">mterm</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">wbawp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">conjbeams</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+          <span class="n">epjtable</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s">"linear"</span><span class="p">,</span><span class="n">niter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">gain</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="s">"0.00mJy"</span><span class="p">,</span>
+          <span class="n">psfmode</span><span class="o">=</span><span class="s">"clark"</span><span class="p">,</span><span class="n">imagermode</span><span class="o">=</span><span class="s">"mosaic"</span><span class="p">,</span><span class="n">ftmachine</span><span class="o">=</span><span class="s">"mosaic"</span><span class="p">,</span><span class="n">mosweight</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">scaletype</span><span class="o">=</span><span class="s">"SAULT"</span><span class="p">,</span>
+          <span class="n">multiscale</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">negcomponent</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">smallscalebias</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">interactive</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="s">"circle[[960pix,960pix], 720pix]"</span><span class="p">,</span>
+          <span class="n">nchan</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">outframe</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">veltype</span><span class="o">=</span><span class="s">"radio"</span><span class="p">,</span>
+          <span class="n">imsize</span><span class="o">=</span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1920</span><span class="p">],</span><span class="n">cell</span><span class="o">=</span><span class="s">"0.5arcsec"</span><span class="p">,</span><span class="n">phasecenter</span><span class="o">=</span><span class="s">"J2000 17h47m19.75 -28d23m07"</span><span class="p">,</span><span class="n">restfreq</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">stokes</span><span class="o">=</span><span class="s">"I"</span><span class="p">,</span>
+          <span class="n">weighting</span><span class="o">=</span><span class="s">"briggs"</span><span class="p">,</span><span class="n">robust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">uvtaper</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">outertaper</span><span class="o">=</span><span class="p">[</span><span class="s">''</span><span class="p">],</span><span class="n">innertaper</span><span class="o">=</span><span class="p">[</span><span class="s">'1.0'</span><span class="p">],</span>
+          <span class="n">modelimage</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">restoringbeam</span><span class="o">=</span><span class="p">[</span><span class="s">''</span><span class="p">],</span><span class="n">pbcor</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">minpb</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">usescratch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+          <span class="n">noise</span><span class="o">=</span><span class="s">"1.0Jy"</span><span class="p">,</span><span class="n">npixels</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">npercycle</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">cyclefactor</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cyclespeedup</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+          <span class="n">nterms</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">reffreq</span><span class="o">=</span><span class="s">""</span><span class="p">,</span><span class="n">chaniter</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">flatnoise</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">allowchunk</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 
@@ -510,7 +677,7 @@
   <script type="text/x-omnimarkup-config;executed=true">
     window.App.Context = {
       buffer_id: 59,
-      timestamp: '1486384571.7293293',
+      timestamp: '1486418621.9755507',
       revivable_key: 'L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci9wb3N0ZXIubWQ='
     };
     window.App.Options = {
