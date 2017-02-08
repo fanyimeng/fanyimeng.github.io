@@ -538,7 +538,7 @@
      <span class="n">reffreq</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Reference frequency (nterms &gt; 1),'' uses central data-frequency</span>
 
 <span class="n">gridmode</span>            <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Gridding kernel for FFT-based transforms, default='' None</span>
-<span class="n">niter</span>               <span class="o">=</span>       <span class="mi">1000</span>        <span class="c">#  Maximum number of iterations</span>
+<span class="n">niter</span>               <span class="o">=</span>       <span class="mi">10</span>          <span class="c">#  Maximum number of iterations</span>
 <span class="n">gain</span>                <span class="o">=</span>        <span class="mf">0.1</span>        <span class="c">#  Loop gain for cleaning</span>
 <span class="n">threshold</span>           <span class="o">=</span>  <span class="s">'0.00mJy'</span>        <span class="c">#  Flux level to stop cleaning, must include units: '1.0mJy'</span>
 <span class="n">psfmode</span>             <span class="o">=</span>    <span class="s">'clark'</span>        <span class="c">#  Method of PSF calculation to use during minor cycles</span>
@@ -669,6 +669,154 @@
 </pre></div>
 
 
+<div class="codehilite"><pre><span class="c">#interactive on meng-desktop</span>
+<span class="n">vis</span>                 <span class="o">=</span> <span class="s">'cbC_allSpw_allCal.ms'</span>    <span class="c">#  Name of input visibility file</span>
+<span class="n">imagename</span>           <span class="o">=</span> <span class="s">'cbC_0208_interactive'</span> <span class="c">#  Pre-name of output images</span>
+<span class="n">outlierfile</span>         <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Text file with image names, sizes, centers for outliers</span>
+<span class="n">field</span>               <span class="o">=</span> <span class="s">'SgrB2_C00,SgrB2_C01,SgrB2_C02,SgrB2_C03,SgrB2_C04,SgrB2_C05,SgrB2_C06,SgrB2_C07,SgrB2_C08,SgrB2_C09'</span> <span class="c">#  F</span>
+                                        <span class="c">#   ield Name or id</span>
+<span class="n">spw</span>                 <span class="o">=</span>         <span class="s">'2~33'</span>        <span class="c">#  Spectral windows e.g. '0~3', '' is all</span>
+<span class="n">selectdata</span>          <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Other data selection parameters</span>
+     <span class="n">timerange</span>      <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Range of time to select from data</span>
+     <span class="n">uvrange</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Select data within uvrange</span>
+     <span class="n">antenna</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Select data based on antenna/baseline</span>
+     <span class="n">scan</span>           <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Scan number range</span>
+     <span class="n">observation</span>    <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Observation ID range</span>
+     <span class="n">intent</span>         <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Scan Intent(s)</span>
+<span class="n">mode</span>                <span class="o">=</span>      <span class="s">'mfs'</span>        <span class="c">#  Spectral gridding type (mfs, channel, velocity, frequency)</span>
+     <span class="n">nterms</span>         <span class="o">=</span>          <span class="mi">1</span>        <span class="c">#  Number of Taylor coefficients to model the sky frequency dependence</span>
+     <span class="n">reffreq</span>        <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Reference frequency (nterms &gt; 1),'' uses central data-frequency</span>
+
+<span class="n">gridmode</span>            <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Gridding kernel for FFT-based transforms, default='' None</span>
+<span class="n">niter</span>               <span class="o">=</span>       <span class="mi">1000</span>        <span class="c">#  Maximum number of iterations</span>
+<span class="n">gain</span>                <span class="o">=</span>        <span class="mf">0.1</span>        <span class="c">#  Loop gain for cleaning</span>
+<span class="n">threshold</span>           <span class="o">=</span>  <span class="s">'0.00mJy'</span>        <span class="c">#  Flux level to stop cleaning, must include units: '1.0mJy'</span>
+<span class="n">psfmode</span>             <span class="o">=</span>    <span class="s">'clark'</span>        <span class="c">#  Method of PSF calculation to use during minor cycles</span>
+<span class="n">imagermode</span>          <span class="o">=</span>   <span class="s">'mosaic'</span>        <span class="c">#  Options: 'csclean' or 'mosaic', '', uses psfmode</span>
+     <span class="n">mosweight</span>      <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Individually weight the fields of the mosaic</span>
+     <span class="n">ftmachine</span>      <span class="o">=</span>   <span class="s">'mosaic'</span>        <span class="c">#  Gridding method for the image</span>
+     <span class="n">scaletype</span>      <span class="o">=</span>    <span class="s">'SAULT'</span>        <span class="c">#  Controls scaling of pixels in the image plane. default='SAULT'; example:</span>
+                                        <span class="c">#   scaletype='PBCOR' Options: 'PBCOR','SAULT'</span>
+     <span class="n">cyclefactor</span>    <span class="o">=</span>        <span class="mf">1.5</span>        <span class="c">#  Controls how often major cycles are done. (e.g. 5 for frequently)</span>
+     <span class="n">cyclespeedup</span>   <span class="o">=</span>         <span class="o">-</span><span class="mi">1</span>        <span class="c">#  Cycle threshold doubles in this number of iterations</span>
+     <span class="n">flatnoise</span>      <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Controls whether searching for clean components is done in a constant</span>
+                                        <span class="c">#   noise residual image (True) or in an optimal signal-to-noise residual</span>
+                                        <span class="c">#   image (False)</span>
+
+<span class="n">multiscale</span>          <span class="o">=</span>        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>        <span class="c">#  Deconvolution scales (pixels); [] = standard clean</span>
+     <span class="n">negcomponent</span>   <span class="o">=</span>         <span class="o">-</span><span class="mi">1</span>        <span class="c">#  Stop cleaning if the largest scale finds this number of neg components</span>
+     <span class="n">smallscalebias</span> <span class="o">=</span>        <span class="mf">0.6</span>        <span class="c">#  a bias to give more weight toward smaller scales</span>
+
+<span class="n">interactive</span>         <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  Use interactive clean (with GUI viewer)</span>
+     <span class="n">npercycle</span>      <span class="o">=</span>       <span class="mi">1000</span>        <span class="c">#  Clean iterations before interactive prompt (can be changed)</span>
+
+<span class="n">mask</span>                <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Cleanbox(es), mask image(s), region(s), or a level</span>
+<span class="n">imsize</span>              <span class="o">=</span> <span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1920</span><span class="p">]</span>      <span class="c">#  x and y image size in pixels.  Single value: same for both</span>
+<span class="n">cell</span>                <span class="o">=</span> <span class="s">'0.5arcsec'</span>       <span class="c">#  x and y cell size(s). Default unit arcsec.</span>
+<span class="n">phasecenter</span>         <span class="o">=</span> <span class="s">'J2000 17h47m19.75 -28d23m07'</span> <span class="c">#  Image center: direction or field index</span>
+<span class="n">restfreq</span>            <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Rest frequency to assign to image (see help)</span>
+<span class="n">stokes</span>              <span class="o">=</span>        <span class="s">'I'</span>        <span class="c">#  Stokes params to image (eg I,IV,IQ,IQUV)</span>
+<span class="n">weighting</span>           <span class="o">=</span>   <span class="s">'briggs'</span>        <span class="c">#  Weighting of uv (natural, uniform, briggs, ...)</span>
+     <span class="n">robust</span>         <span class="o">=</span>        <span class="mf">0.0</span>        <span class="c">#  Briggs robustness parameter</span>
+     <span class="n">npixels</span>        <span class="o">=</span>          <span class="mi">0</span>        <span class="c">#  number of pixels to determine uv-cell size 0=&gt; field of view</span>
+
+<span class="n">uvtaper</span>             <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Apply additional uv tapering of visibilities</span>
+<span class="n">modelimage</span>          <span class="o">=</span>         <span class="s">''</span>        <span class="c">#  Name of model image(s) to initialize cleaning</span>
+<span class="n">restoringbeam</span>       <span class="o">=</span>       <span class="p">[</span><span class="s">''</span><span class="p">]</span>        <span class="c">#  Output Gaussian restoring beam for CLEAN image</span>
+<span class="n">pbcor</span>               <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Output primary beam-corrected image</span>
+<span class="n">minpb</span>               <span class="o">=</span>        <span class="mf">0.2</span>        <span class="c">#  Minimum PB level to use</span>
+<span class="n">usescratch</span>          <span class="o">=</span>       <span class="bp">True</span>        <span class="c">#  True if to save model visibilities in MODEL_DATA column</span>
+<span class="n">allowchunk</span>          <span class="o">=</span>      <span class="bp">False</span>        <span class="c">#  Divide large image cubes into channel chunks for deconvolution</span>
+</pre></div>
+
+
+<h3>transfer data to GILDAS</h3>
+<p>In CASA 4.7.0:</p>
+<div class="codehilite"><pre><span class="c">#2017-02-07 09:27:34     INFO    listobs::ms::summary+     SpwID  Name          #Chans   Frame   Ch0(MHz)  ChanWid(kHz)  TotBW(kHz) CtrFreq(MHz) BBC Num  Corrs          </span>
+<span class="c">#2017-02-07 09:27:34     INFO    listobs::ms::summary+     0      EVLA_C#A1C1#2   3988   TOPO    4006.000      1000.000   3988000.0   5999.5000       10  RR  LL</span>
+<span class="c">#in ishkur ~/mst.py</span>
+<span class="n">fieldList</span> <span class="o">=</span> <span class="p">[</span><span class="s">'SgrB2_C00'</span><span class="p">,</span>
+<span class="s">'SgrB2_C01'</span><span class="p">,</span>
+<span class="s">'SgrB2_C02'</span><span class="p">,</span>
+<span class="s">'SgrB2_C03'</span><span class="p">,</span>
+<span class="s">'SgrB2_C04'</span><span class="p">,</span>
+<span class="s">'SgrB2_C05'</span><span class="p">,</span>
+<span class="s">'SgrB2_C06'</span><span class="p">,</span>
+<span class="s">'SgrB2_C07'</span><span class="p">,</span>
+<span class="s">'SgrB2_C08'</span><span class="p">,</span>
+<span class="s">'SgrB2_C09'</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldList</span><span class="p">:</span>
+  <span class="k">print</span> <span class="n">field</span><span class="o">+</span><span class="s">'_comspws.ms'</span>
+  <span class="c">#mstransform(vis = field+'_comspws.ms',</span>
+  <span class="c">#  outputvis = field+'_comspws_mst.ms',</span>
+  <span class="c">#  outframe = 'LSRK',</span>
+  <span class="c">#  restfreq = '5999.5000MHz',</span>
+  <span class="c">#  datacolumn = 'DATA',</span>
+  <span class="c">#  usewtspectrum = True</span>
+  <span class="c">#  )</span>
+  <span class="c">#cvel(vis = field+'_comspws_mst.ms',</span>
+  <span class="c">#  outputvis = field+'_comspws_mst_cvel.ms',</span>
+  <span class="c">#  outframe = 'LSRK',</span>
+  <span class="c">#  restfreq = '5999.5000MHz',</span>
+  <span class="c">#  )</span>
+  <span class="n">exportuvfits</span><span class="p">(</span><span class="n">vis</span> <span class="o">=</span> <span class="n">field</span><span class="o">+</span><span class="s">'_comspws_mst_cvel_noflag.ms'</span><span class="p">,</span>
+  <span class="n">fitsfile</span> <span class="o">=</span> <span class="n">field</span><span class="o">+</span><span class="s">'_comspws_noflag.fits'</span><span class="p">)</span>
+  <span class="c">#split(vis = field+'_comspws_mst_cvel.ms',</span>
+  <span class="c">#outputvis = field+'_comspws_mst_cvel_noflag.ms',</span>
+  <span class="c">#keepflags = False</span>
+  <span class="p">)</span>
+<span class="sd">'''</span>
+<span class="sd">for i in range(32):</span>
+<span class="sd">  print 'sourceX11-spw'+str(i)+'.ms'</span>
+<span class="sd">  mstransform(vis = 'sourceX11-spw'+str(i)+'.ms',</span>
+<span class="sd">    outputvis = 'sourceX11-spw'+str(i)+'-mstransform.ms',</span>
+<span class="sd">    outframe = 'LSRK',</span>
+<span class="sd">    restfreq = str(freqs[i])+'MHz',</span>
+<span class="sd">    datacolumn = 'DATA',</span>
+<span class="sd">    usewtspectrum = True</span>
+<span class="sd">    )</span>
+
+
+<span class="sd">for i in range(32):</span>
+<span class="sd">  print 'sourceX11-spw'+str(i)+'.ms'</span>
+<span class="sd">  cvel(vis = 'sourceX11-spw'+str(i)+'-mstransform.ms',</span>
+<span class="sd">    outputvis = 'sourceX11-spw'+str(i)+'-cvel.ms',</span>
+<span class="sd">    outframe = 'LSRK',</span>
+<span class="sd">    restfreq = str(freqs[i])+'MHz',</span>
+<span class="sd">    )</span>
+
+<span class="sd">'''</span>
+
+<span class="c">#for i in range(32):</span>
+<span class="c"># print 'sourceX11-spw'+str(i)+'.ms'</span>
+<span class="c"># exportuvfits(vis = 'sourceX11-spw'+str(i)+'-cvel.ms',</span>
+<span class="c">#   fitsfile = 'sourceX11-spw'+str(i)+'.uvfits',</span>
+<span class="c">#   multisource = False)</span>
+<span class="c">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span>
+  <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">freqs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s">'MHz'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">cvel</span><span class="p">(</span><span class="n">vis</span> <span class="o">=</span> <span class="s">'sourceX11-spw'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">'-mstransform.ms'</span><span class="p">,</span>
+  <span class="n">outputvis</span> <span class="o">=</span> <span class="s">'sourceX11-spw'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">'-cvel_20-108.ms'</span><span class="p">,</span>
+  <span class="n">outframe</span> <span class="o">=</span> <span class="s">'LSRK'</span><span class="p">,</span>
+  <span class="n">restfreq</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">freqs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s">'MHz'</span><span class="p">,</span>
+  <span class="n">spw</span> <span class="o">=</span> <span class="s">'0:20~108'</span>
+  <span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>rsync -zarv --progress --human-readable fanyi@nergal:/scratch/aginsbur/SgrB2/ALMA/2013.1.00269.S/HC3N/HC3N_TP_7m_12m_feather.fits   ./
+rsync -zarv --progress --human-readable fanyi@nergal:/scratch/aginsbur/SgrB2/ALMA/2013.1.00269.S/merge/SgrB2_b3_7M_12M.HC3N.image.pbcor.fits   ./
+rsync -zarv --progress --human-readable fanyi@nergal:/scratch/aginsbur/SgrB2/ALMA/2013.1.00269.S/merge/SgrB2_b3_7M_12M_natural.HC3N.image.pbcor.fits   ./
+</pre></div>
+
+
+<h3></h3>
+<p><img alt="" src="./poster_files/L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci9jYkNfMDIwNy5wbmc=">
+<img alt="" src="./poster_files/L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci8wNzAzXzMuMF9pbWFnZS5wbmc=">
+<img alt="" src="./poster_files/L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci9jYkMwMjA3X2ltYWdlX3dpdGhBbG1hQ29udC5wbmc=">
+<img alt="" src="./poster_files/L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci9wb3N0ZXIucG5n">
+<img alt="" src="http://127.0.0.9:51004/view/59"></p>
 <h1><a href="https://hera.ph1.uni-koeln.de/~meng/notes_index.html"><code>Back to Index</code></a></h1>
         </article>
       </div>
@@ -677,7 +825,7 @@
   <script type="text/x-omnimarkup-config;executed=true">
     window.App.Context = {
       buffer_id: 59,
-      timestamp: '1486418621.9755507',
+      timestamp: '1486559682.2142472',
       revivable_key: 'L2hvbWUvbWVuZy9Ecm9wYm94L05vdGVzL1Bvc3Rlci9wb3N0ZXIubWQ='
     };
     window.App.Options = {
