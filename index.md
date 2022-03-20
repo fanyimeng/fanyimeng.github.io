@@ -1,9 +1,8 @@
-#    
-## <center>孟繁一</center> 
-## <center>Fanyi Meng</center>
+# 孟繁一 Fanyi Meng
 
-<center> <img src="pic/por_hv503.jpeg" alt="my avatar" width="200"/> </center>
-<center>Male, 31</center>
+<img src="pic/por_hv503.jpeg" alt="my avatar" width="200"/>
+
+Male, 31, Chinese
 
 - post-doc @ [UCAS](https://english.ucas.ac.cn)+[NAOC](http://english.nao.cas.cn), [CAS](https://english.cas.cn).
 - working on high-mass star formation & interstellar medium.
