@@ -1,7 +1,8 @@
-# <center>孟繁一</center> 
-# <center>Fanyi Meng</center>
+#    
+## <center>孟繁一</center> 
+## <center>Fanyi Meng</center>
 
-<center> <img src="pic/por_hv503.jpeg" alt="my avatar" width="100"/> </center>
+<center> <img src="pic/por_hv503.jpeg" alt="my avatar" width="200"/> </center>
 <center>Male, 31</center>
 
 - post-doc @ [UCAS](https://english.ucas.ac.cn)+[NAOC](http://english.nao.cas.cn), [CAS](https://english.cas.cn).
