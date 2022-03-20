@@ -1,6 +1,6 @@
 # 孟繁一 Fanyi Meng
 
-<img src="pic/por_hv503.jpeg" alt="my avatar" width="200"/>
+<img src="pic/por_hv503.jpeg" alt="my pic" width="200"/>
 
 Male, 31, Chinese
 
