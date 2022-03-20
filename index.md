@@ -1,7 +1,7 @@
 # 孟繁一 Fanyi Meng
 
 
-Male, 31, Chinese
+Male, 31
 
 
 post-doc @ [UCAS](https://english.ucas.ac.cn)+[NAOC](http://english.nao.cas.cn), [CAS](https://english.cas.cn).
