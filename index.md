@@ -1,9 +1,6 @@
 # 孟繁一 Fanyi Meng
 
 
-Male, 31
-
-
 post-doc @ [UCAS](https://english.ucas.ac.cn)+[NAOC](http://english.nao.cas.cn), [CAS](https://english.cas.cn).
 
 working on high-mass star formation & interstellar medium using [PMO 13.7 m](http://www.dlh.pmo.cas.cn), [IRAM 30 m](https://www.iram-institute.org/EN/30-meter-telescope.php), [ALMA](https://www.almaobservatory.org/en/home/), [VLA](https://public.nrao.edu/telescopes/vla/), and [GMRT](http://www.gmrt.ncra.tifr.res.in).
